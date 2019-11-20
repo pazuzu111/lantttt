@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getFlorists } from "./actions/actions";
+import Results from "./components/Results";
 import "./App.css";
 
 function App(props) {
@@ -20,6 +21,8 @@ function App(props) {
           placeholder="put in your address..."
         />
       </form>
+
+      <Results florists={props.florists} />
     </div>
   );
 }
