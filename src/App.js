@@ -1,26 +1,40 @@
 import React from "react";
-import logo from "./logo.svg";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { getFlorists } from "./actions/actions";
 import "./App.css";
 
-function App() {
+function App(props) {
+  navigator.geolocation.getCurrentPosition(loc => {
+    props.actions.getFlorists(loc.coords.latitude, loc.coords.longitude);
+  });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <form>
+        <input
+          id="search"
+          type="search"
+          name="id"
+          autoComplete="off"
+          placeholder="put in your address..."
+        />
+      </form>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return { florists: state.florists, loading: state.loading };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    actions: bindActionCreators({ getFlorists }, dispatch)
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
