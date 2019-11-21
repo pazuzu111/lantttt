@@ -8,7 +8,7 @@ const Results = ({ florists }) => {
           return (
             <div key={x.id} className="items">
               <h3>{x.name}</h3>
-              <img src={x.image_url} height="62" width="62" />
+              <img src={x.image_url} height="82" width="82" />
               <h3> Rating: {x.rating} </h3>
               <h3> Phone: {x.display_phone} </h3>
               <h3> Location: {x.location.display_address} </h3>
@@ -16,7 +16,7 @@ const Results = ({ florists }) => {
           );
         })
       ) : (
-        <p>loading...</p>
+        <h2>loading...</h2>
       )}
     </div>
   );

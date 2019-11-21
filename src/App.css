@@ -20,3 +20,18 @@
 .App-link {
   color: #09d3ac;
 }
+
+.results {
+  display: block;
+  height: 50vh;
+  width: 63vw;
+  margin: auto;
+  margin-top: 11vh;
+  overflow: auto;
+}
+
+.items {
+  text-align: left;
+  border: 1px solid #ced4da;
+  padding: 20px;
+}
