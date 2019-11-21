@@ -7,16 +7,22 @@ const Results = ({ florists }) => {
         florists.map(x => {
           return (
             <div key={x.id} className="items">
-              <h3>{x.name}</h3>
-              <img src={x.image_url} height="82" width="82" />
-              <h3> Rating: {x.rating} </h3>
-              <h3> Phone: {x.display_phone} </h3>
-              <h3> Location: {x.location.display_address} </h3>
+              <h2>{x.name}</h2>
+              <img src={x.image_url} height="200" width="200" />
+              <h3>
+                Rating: <span>{x.rating} stars</span>
+              </h3>
+              <h3>
+                Phone: <span>{x.display_phone} </span>
+              </h3>
+              <h3>
+                Location: <span>{x.location.display_address}</span>{" "}
+              </h3>
             </div>
           );
         })
       ) : (
-        <h2>loading...</h2>
+        <h1>loading...</h1>
       )}
     </div>
   );

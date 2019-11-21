@@ -32,6 +32,7 @@ const App = props => {
           width="402"
         />
       </div>
+
       <form onSubmit={handleSubmit}>
         <input
           type="text"
