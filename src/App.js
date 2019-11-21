@@ -6,7 +6,7 @@ import Results from "./components/Results";
 import "./App.css";
 
 const App = props => {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState("k");
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(loc => {
@@ -16,7 +16,7 @@ const App = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    props.actions.getFlorists2(e.target.value);
+    props.actions.getFlorists2(input);
   };
 
   const handleChange = e => {
@@ -25,12 +25,26 @@ const App = props => {
 
   return (
     <div className="App">
+      <div className="logo">
+        <img
+          src="https://mvp-lantern-staging.s3.us-east-2.amazonaws.com/LOGO_Black.png"
+          height="85"
+          width="402"
+        />
+      </div>
       <form onSubmit={handleSubmit}>
-        <input type="text" value={input} onChange={handleChange} />
+        <input
+          type="text"
+          onChange={handleChange}
+          placeholder="What is your location?"
+        />
         <input type="submit" value="Submit" />
       </form>
 
-      <Results florists={props.florists} />
+      <div className="results-container">
+        <div>RESULTS</div>
+        <Results florists={props.florists} />
+      </div>
     </div>
   );
 };
@@ -45,7 +59,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
